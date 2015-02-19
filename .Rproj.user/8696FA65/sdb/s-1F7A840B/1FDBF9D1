@@ -1,0 +1,17 @@
+{
+    "contents" : "corr <- function(directory, threshold = 0) {\n  ## 'directory' is a character vector of length 1 indicating\n  ## the location of the CSV files\n  \n  ## 'threshold' is a numeric vector of length 1 indicating the\n  ## number of completely observed observations (on all\n  ## variables) required to compute the correlation between\n  ## nitrate and sulfate; the default is 0\n  \n  ## Return a numeric vector of correlations\n  \n  correlaciones <- vector()\n  ficheros <- dir(directory)\n  \n  for (fichero in ficheros) {\n    fichero <- paste (directory, fichero, sep = \"/\")\n    mediciones <- read.csv(fichero)\n    buenas <- complete.cases(mediciones)\n    if (sum(buenas) < threshold) {\n      next\n    }\n    \n    colsulfate <- mediciones[buenas, \"sulfate\"]\n    colnitrate <- mediciones[buenas, \"nitrate\"]\n    valoradd <- cor(colnitrate, colsulfate)\n    correlaciones = c(correlaciones, valoradd)\n  }\n  \n  return (correlaciones)\n  \n}",
+    "created" : 1424365124220.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3841246143",
+    "id" : "1FDBF9D1",
+    "lastKnownWriteTime" : 1424367813,
+    "path" : "C:/Cursos/JoshHopkins/2. R/ProgrammingAssignment 1/corr.R",
+    "project_path" : "corr.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
