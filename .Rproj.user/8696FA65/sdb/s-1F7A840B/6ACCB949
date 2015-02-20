@@ -1,12 +1,12 @@
 {
-    "contents" : "complete <- function(directory, id = 1:332) {\n  ## 'directory' is a character vector of length 1 indicating\n  ## the location of the CSV files\n  \n  ## 'id' is an integer vector indicating the monitor ID numbers\n  ## to be used\n  \n  ## Return a data frame of the form:\n  ## id nobs\n  ## 1  117\n  ## 2  1041\n  ## ...\n  ## where 'id' is the monitor ID number and 'nobs' is the\n  ## number of complete cases\n  \n  \n  resumen <- data.frame(id=numeric(), nobs=numeric())\n  \n  for (sensor in id) {\n    sensor_txt <- paste(sprintf(\"%03i\", sensor), \"csv\", sep = \".\")\n    sensor_txt <- paste (directory, sensor_txt, sep = \"/\")\n    mediciones <- read.csv(sensor_txt)\n    buenas <- sum(complete.cases(mediciones))\n    lineaadd <- data.frame(id=sensor, nobs=buenas)\n    resumen <- rbind(resumen, lineaadd)\n  }\n  \n  return (resumen)\n  \n}",
+    "contents" : "complete <- function(directory, id = 1:332) {\n     ## 'directory' is a character vector of length 1 indicating\n     ## the location of the CSV files\n     \n     ## 'id' is an integer vector indicating the monitor ID numbers\n     ## to be used\n     \n     ## Return a data frame of the form:\n     ## id nobs\n     ## 1  117\n     ## 2  1041\n     ## ...\n     ## where 'id' is the monitor ID number and 'nobs' is the\n     ## number of complete cases\n     \n     \n     resumen <- data.frame(id=numeric(), nobs=numeric())\n     \n     for (sensor in id) {\n          sensor_txt <- paste(sprintf(\"%03i\", sensor), \"csv\", sep = \".\")\n          sensor_txt <- paste (directory, sensor_txt, sep = \"/\")\n          mediciones <- read.csv(sensor_txt)\n          buenas <- sum(complete.cases(mediciones))\n          lineaadd <- data.frame(id=sensor, nobs=buenas)\n          resumen <- rbind(resumen, lineaadd)\n     }\n     \n     return (resumen)\n     \n}\n",
     "created" : 1424361357089.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "2858954677",
+    "hash" : "3622385419",
     "id" : "6ACCB949",
-    "lastKnownWriteTime" : 1424363263,
+    "lastKnownWriteTime" : 1424420971,
     "path" : "C:/Cursos/JoshHopkins/2. R/ProgrammingAssignment 1/complete.R",
     "project_path" : "complete.R",
     "properties" : {
